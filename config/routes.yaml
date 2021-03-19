@@ -1,0 +1,12 @@
+index:
+    path: /
+    controller: App\Controller\MainController::index
+metier:
+    path: /metier
+    controller: App\Controller\MetierController::index
+employeur:
+    path: /employeur
+    controller: App\Controller\EmployeurController::index
+projet:
+    path: /projet
+    controller: App\Controller\ProjetController::index

@@ -1,0 +1,114 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Employeurs form{% endblock %}
+{% block main_content %}
+    <main class="app-content">
+        <div class="app-title">
+            <div>
+                <h1><i class="fa fa-user"></i>&nbsp;Edition d'un employé</h1>
+            </div>
+            <ul class="app-breadcrumb breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{{path("main")}}"><i class="fa fa-home fa-lg"></i></a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{{path('employeur')}}">Employeurs</a>
+                </li>
+                <li class="breadcrumb-item">Edition d'un employé</li>
+            </ul>
+        </div>
+        <div class="tile">
+            {#            <div class="alert alert-dismissible alert-success my-4">#}
+            {#                <button class="close" type="button" data-dismiss="alert">×</button><strong>Well done!</strong> Message flash.#}
+            {#            </div>#}
+            {{ form_start(form,{'attr':{'class':'form-horizontal'}}) }}
+            <section>
+                <h3>Informations générales</h3>
+                <div class="row mt-4">
+                    <div class="offset-md-4 col-md-8">
+                        <div class="form-group row">
+                            {{ form_errors(form.prenom) }}
+                            {{ form_label(form.prenom) }}
+                            <div class="col-md-9">
+                                {{ form_widget(form.prenom,{
+                                    'attr':{
+                                        'class':'form_control',
+                                        'placeholder':form.prenom.vars.label}})
+                                }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            {{ form_errors(form.nom) }}
+                            {{ form_label(form.nom) }}
+                            <div class="col-md-9">
+                                {{ form_widget(form.nom,{
+                                    'attr':{
+                                        'class':'form_control',
+                                        'placeholder':form.nom.vars.label}})
+                                }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            {{ form_errors(form.email) }}
+                            {{ form_label(form.email) }}
+                            <div class="col-md-9">
+                                {{ form_widget(form.email,{
+                                    'attr':{
+                                        'class':'form_control',
+                                        'placeholder':form.email.vars.label}})
+                                }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <hr/>
+            <section>
+                <h3>Production</h3>
+                <div class="row mt-4">
+                    <div class="offset-md-4 col-md-8">
+                        <div class="form-group row">
+                            {{ form_errors(form.metier) }}
+                            {{ form_label(form.metier) }}
+                            <div class="col-md-9">
+                                {{ form_widget(form.metier,{
+                                    'attr':{
+                                        'class':'form_control',
+                                        }})
+                                }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            {{ form_errors(form.cout_horaire) }}
+                            {{ form_label(form.cout_horaire) }}
+                            <div class="col-md-9">
+                                {{ form_widget(form.cout_horaire,{
+                                    'attr':{
+                                        'class':'form_control',
+                                        'placeholder':form.cout_horaire.vars.label}})
+                                }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            {{ form_errors(form.date_embauche) }}
+                            {{ form_label(form.date_embauche) }}
+                            <div class="col-md-9">
+                                {{ form_widget(form.date_embauche,{
+                                    'attr':{
+                                        'class':'form_control',
+                                        'placeholder':form.date_embauche.vars.label}})
+                                }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="row">
+                <div class="offset-md-6 col-md-6">
+                    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i>Enregistrer</button>
+                </div>
+            </div>
+            {{ form_end(form) }}
+
+        </div>
+    </main>
+{% endblock %}

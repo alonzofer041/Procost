@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+{% set route_name = app.request.attributes.get('_route') %}
+{% block body %}
+    <header class="app-header"><a class="app-header__logo" href="#">Procost</a>
+        <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+        <!-- Navbar Right Menu-->
+        <ul class="app-nav">
+            <li class="app-search">
+                <a href="{{ path('app_logout') }}" class="btn btn-info">Se déconnecter</a>
+            </li>
+        </ul>
+    </header>
+    <!-- Sidebar menu-->
+    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+    <aside class="app-sidebar">
+        <div class="app-sidebar__user">
+            <img class="app-sidebar__user-avatar" src="{{ asset('img/user.jpg') }}" alt="User Image">
+            <div>
+                {% if app.user %}
+                <p class="app-sidebar__user-name">{{ app.user.prenom }} {{ app.user.nom }}</p>
+                <p class="app-sidebar__user-designation"></p>
+                {% endif %}
+            </div>
+        </div>
+        <ul class="app-menu">
+            <li>
+                <a class="app-menu__item {% if route_name=="main" %} active {% endif %}" href="{{ path("main") }}">
+                    <i class="app-menu__icon fa fa-dashboard"></i>
+                    <span class="app-menu__label">Tableau de bord</span>
+                </a>
+            </li>
+            <li>
+                <a class="app-menu__item {% if route_name=="projet" %} active {% endif %}" href="{{ path("projet") }}">
+                    <i class="app-menu__icon fa fa-laptop"></i>
+                    <span class="app-menu__label">Projets</span>
+                </a>
+            </li>
+            <li>
+                <a class="app-menu__item {% if route_name=="employeur" %} active {% endif %}" href="{{ path("employeur") }}">
+                    <i class="app-menu__icon fa fa-users"></i>
+                    <span class="app-menu__label">Employés</span>
+                </a>
+            </li>
+            <li>
+                <a class="app-menu__item {% if route_name=="metier" %} active {% endif %}" href="{{path("metier")}}">
+                    <i class="app-menu__icon fa fa-book"></i>
+                    <span class="app-menu__label">Métiers</span>
+                </a>
+            </li>
+        </ul>
+    </aside>
+    {% block main_content %}{% endblock %}
+{% endblock %}
